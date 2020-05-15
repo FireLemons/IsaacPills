@@ -3,15 +3,19 @@
     src: url(../Fonts/upheavtt.ttf)
 }
 
-body, html, #main {
-    height: 100%
-}
-
 * {
     font-family: Upheaval;
     text-align: center;
     text-align: -webkit-center;
     margin: 0
+}
+
+body, html, #main {
+    height: 100%
+}
+
+.noscript{
+  color: #d50000;
 }
 
 .clickable {
