@@ -1,44 +1,81 @@
 const pills = new Vue({
   el: '#main',
   data: {
+    pillSlotExtendedPillsIndex: 10,
     pillSlots: [
       {
         alt: 'Solid Blue Pill',
-        src: 'Images/Pills/Blue.png'
+        src: 'Images/Pills/Blue.png',
+        effect: '???'
       },
 			{
         alt: 'Dark-Blue Top with Aqua Bottom',
-        src: 'Images/Pills/BlueCyan.png'
+        src: 'Images/Pills/BlueCyan.png',
+        effect: '???'
       },
 			{
         alt: 'Solid Orange Pill',
-        src: 'Images/Pills/Orange.png'
+        src: 'Images/Pills/Orange.png',
+        effect: '???'
       },
 			{
         alt: 'Solid White Pill',
-        src: 'Images/Pills/White.png'
+        src: 'Images/Pills/White.png',
+        effect: '???'
       },
       {
 			  alt: 'Spotted Red on Top with Red Bottom',
-        src: 'Images/Pills/RedSpecled.png'
+        src: 'Images/Pills/RedSpecled.png',
+        effect: '???'
       },
       {
 			  alt: 'Spotted Yellow on Top with White Bottom',
-        src: 'Images/Pills/SpottedWhite.png'
+        src: 'Images/Pills/SpottedWhite.png',
+        effect: '???'
       },
       {
 			  alt: 'White Top with Blue Bottom',
-        src: 'Images/Pills/WhiteBlue.png'
+        src: 'Images/Pills/WhiteBlue.png',
+        effect: '???'
       },
 		  {
         alt: 'Pink Top with Red Bottom',
-        src: 'Images/Pills/WhiteRed.png'
+        src: 'Images/Pills/WhiteRed.png',
+        effect: '???'
       },
       {
 			  alt: 'Yellow Top with Orange Bottom',
-        src: 'Images/Pills/YellowOrange.png'
+        src: 'Images/Pills/YellowOrange.png',
+        effect: '???'
+      },
+      //Extended Pill Slots
+      { 
+        alt: 'White Top with Black Bottom',
+        src: 'Images/Pills/AfterBirth/Black_White.png',
+        effect: '???'
+      },
+      { 
+        alt: 'Black Top with Yellow Bottom',
+        src: 'Images/Pills/AfterBirth/Black_Yellow.png',
+        effect: '???'
+      },
+      { 
+        alt: 'White Top with Cyan Bottom',
+        src: 'Images/Pills/AfterBirth/White_Cyan.png',
+        effect: '???'
+      },
+      {
+        alt: 'White Top with Yellow Bottom',
+        src: 'Images/Pills/AfterBirth/White_Yellow.png',
+        effect: '???' 
       }
     ]
+  },
+  computed: {},
+  methods: {
+    switchVersion: function() {
+
+    }
   }
 })
 
@@ -62,52 +99,6 @@ const pills = new Vue({
         case 3:
             return void addElements(antiPills, pillEffects);
     }
-}
-function addElements(a, b) {
-    a.forEach(function (a) {
-        b.push(a);
-    }),
-        b.sort();
-}
-function removeElements(a, b) {
-    a.forEach(function (a) {
-        var c = b.indexOf(a);
-        c >= 0 && b.splice(c, 1);
-    });
-}
-function getPillIndex(a) {
-    return a.index() + 3 * a.parent().index();
-}
-function setEffect(a, b) {
-    a.text(b), (pills[getPillIndex(a.parent())] = pillEffects.indexOf(b));
-}
-function changeEffect(a, b) {
-    var c = getPillIndex(a);
-    b ? pills[c]++ : (pills[c] = pills[c] - 1 < 0 ? pillEffects.length - 1 : pills[c] - 1), (pills[c] %= pillEffects.length), a.children("p").text(pillEffects[pills[c]]);
-}
-function changeEffectScroll(a) {
-    changeEffect($(this), a.deltaY < 0);
-}
-function stopScrolling(a) {
-    return a.preventDefault(), a.stopPropagation(), !1;
-}
-function applyListeners(a) {
-    a.append("<p class='noSelect'>" + pillEffects[1] + "</p>"),
-        a.on("scroll touchmove mousewheel", stopScrolling),
-        a.mousewheel(changeEffectScroll),
-        a.on("mouseleave mouseup", function () {
-            clearInterval(cycleLock.intervalLock), clearTimeout(cycleLock.timeoutLock);
-        }),
-        a.mousedown(function (a) {
-            var b = $(this).width() / 2 < a.pageX - $(this).offset().left,
-                c = $(this);
-            changeEffect(c, b),
-                (cycleLock.timeoutLock = setTimeout(function () {
-                    cycleLock.intervalLock = setInterval(function () {
-                        changeEffect(c, b);
-                    }, 200);
-                }, 300));
-        });
 }
 var versions = ["Antibirth", "AfterBirth+", "AfterBirth", "Rebirth"],
     pillEffects = [
