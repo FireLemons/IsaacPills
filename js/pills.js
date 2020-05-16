@@ -69,7 +69,8 @@ const pills = new Vue({
         src: 'Images/Pills/AfterBirth/White_Yellow.png',
         effect: '???' 
       }
-    ]
+    ],
+    version: 'Rebirth+'
   },
   computed: {},
   methods: {
