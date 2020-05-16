@@ -7,8 +7,8 @@
 		<link rel="shortcut icon" href="Images/favicon.png" />
 		<link rel="stylesheet" type="text/css" href="CSS/isek.css">
 		
-		<script src="js/vue.min.js"></script>
-		<script src="js/pills.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/pills.js" defer></script>
 	</head>
 
 	<body>
@@ -28,39 +28,11 @@
 			</div>
 			<table id="pillInfo">
 				<tbody>
-					<tr>
-						<td>
-							<img alt="Solid Blue Pill" class="noSelect" src="Images/Pills/Blue.png">
-						</td>
-						<td>
-							<img alt="Dark-Blue Top with Aqua Bottom" class="noSelect" src="Images/Pills/BlueCyan.png">
-						</td>
-						<td>
-							<img alt="Solid Orange Pill" class="noSelect" src="Images/Pills/Orange.png">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<img alt="Solid White Pill" class="noSelect" src="Images/Pills/White.png">
-						</td>
-						<td>
-							<img alt="Spotted Red on Top with Red Bottom" class="noSelect" src="Images/Pills/RedSpecled.png">
-						</td>
-						<td>
-							<img alt="Spotted Yellow on Top with White Bottom" class="noSelect" src="Images/Pills/SpottedWhite.png">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<img alt="White Top with Blue Bottom" class="noSelect" src="Images/Pills/WhiteBlue.png">
-						</td>
-						<td>
-							<img alt="Pink Top with Red Bottom" class="noSelect" src="Images/Pills/WhiteRed.png">
-						</td>
-						<td>
-							<img alt="Yellow Top with Orange Bottom" class="noSelect" src="Images/Pills/YellowOrange.png">
-						</td>
-					</tr>
+          <tr v-for="row in Math.ceil(pillSlots.length / 3)">
+            <td v-for="pillSlot in pillSlots.slice((row - 1) * 3, ((row - 1) * 3) + 3)">
+							<img :alt="pillSlot.alt" class="noSelect" :src="pillSlot.src">
+            </td>
+          </tr>
 				</tbody>
 			</table>
 		<div id="footer">
