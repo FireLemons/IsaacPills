@@ -70,6 +70,28 @@ const pills = new Vue({
         effect: '???' 
       }
     ],
+    pillSlotsExtended: [
+      { 
+        alt: 'White Top with Black Bottom',
+        src: 'Images/Pills/AfterBirth/Black_White.png',
+        effect: '???'
+      },
+      { 
+        alt: 'Black Top with Yellow Bottom',
+        src: 'Images/Pills/AfterBirth/Black_Yellow.png',
+        effect: '???'
+      },
+      { 
+        alt: 'White Top with Cyan Bottom',
+        src: 'Images/Pills/AfterBirth/White_Cyan.png',
+        effect: '???'
+      },
+      {
+        alt: 'White Top with Yellow Bottom',
+        src: 'Images/Pills/AfterBirth/White_Yellow.png',
+        effect: '???' 
+      }
+    ],
     version: 'Afterbirth+'
   },
   computed: {},
@@ -81,12 +103,18 @@ const pills = new Vue({
           break
         case 'Afterbirth':
           this.version = 'Rebirth'
+          this.pillSlots.splice(this.pillSlotExtendedPillsIndex - 1, 4)
           break
         case 'Rebirth':
           this.version = 'Antibirth'
           break
         case 'Antibirth':
           this.version = 'Afterbirth+'
+          this.pillSlotsExtended.forEach(
+            (pillSlot) => {
+              this.pillSlots.push(pillSlot)
+            }
+          )
           break
         default:
           throw new RangeError(`Unknown game version: "${this.version}"`)
