@@ -94,8 +94,19 @@ const pills = new Vue({
     ],
     version: 'Afterbirth+'
   },
-  computed: {},
+  watch: {
+    version: function() {
+      this.save()
+    }
+  },
   methods: {
+    save: function(){
+      localStorage.setItem('pills', JSON.stringify(
+        {
+          version: this.version
+        }
+      ))
+    },
     switchVersion: function() {
       switch(this.version){
         case 'Afterbirth+':
@@ -119,6 +130,13 @@ const pills = new Vue({
         default:
           throw new RangeError(`Unknown game version: "${this.version}"`)
       }
+    }
+  },
+  created: function(){
+    let saveData = JSON.parse(localStorage.getItem('pills'))
+
+    if(saveData){
+      this.version = saveData.version
     }
   }
 })
