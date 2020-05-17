@@ -91,14 +91,14 @@ body, html, #main {
 }
 
 #topControls div {
-    flex-grow: 1
+    padding: 0 2em;
 }
 
 #version_header {
     background: url(../Images/Message.png) center center no-repeat border-box;
     color: #fff;
     display: inline-block;
-    flex-grow: 7;
+    flex-grow: 1;
     font-size: 30pt;
     padding: .4em;
 }
