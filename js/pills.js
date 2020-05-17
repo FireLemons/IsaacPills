@@ -70,12 +70,27 @@ const pills = new Vue({
         effect: '???' 
       }
     ],
-    version: 'Rebirth+'
+    version: 'Afterbirth+'
   },
   computed: {},
   methods: {
     switchVersion: function() {
-
+      switch(this.version){
+        case 'Afterbirth+':
+          this.version = 'Afterbirth'
+          break
+        case 'Afterbirth':
+          this.version = 'Rebirth'
+          break
+        case 'Rebirth':
+          this.version = 'Antibirth'
+          break
+        case 'Antibirth':
+          this.version = 'Afterbirth+'
+          break
+        default:
+          throw new RangeError(`Unknown game version: "${this.version}"`)
+      }
     }
   }
 })
