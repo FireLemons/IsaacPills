@@ -1,8 +1,9 @@
 const pills = new Vue({
   el: '#main',
   data: {
-    pillSlotExtendedPillsIndex: 10,
-    pillSlots: [
+    pillEffects: [],
+    pillSlots: [],
+    pillSlotsDefault: [
       {
         alt: 'Solid Blue Pill',
         src: 'Images/Pills/Blue.png',
@@ -47,27 +48,6 @@ const pills = new Vue({
 			  alt: 'Yellow Top with Orange Bottom',
         src: 'Images/Pills/YellowOrange.png',
         effect: '???'
-      },
-      //Extended Pill Slots
-      { 
-        alt: 'White Top with Black Bottom',
-        src: 'Images/Pills/AfterBirth/Black_White.png',
-        effect: '???'
-      },
-      { 
-        alt: 'Black Top with Yellow Bottom',
-        src: 'Images/Pills/AfterBirth/Black_Yellow.png',
-        effect: '???'
-      },
-      { 
-        alt: 'White Top with Cyan Bottom',
-        src: 'Images/Pills/AfterBirth/White_Cyan.png',
-        effect: '???'
-      },
-      {
-        alt: 'White Top with Yellow Bottom',
-        src: 'Images/Pills/AfterBirth/White_Yellow.png',
-        effect: '???' 
       }
     ],
     pillSlotsExtended: [
@@ -107,25 +87,35 @@ const pills = new Vue({
         }
       ))
     },
-    switchVersion: function() {
+    setVersionAfterbirth () {
+      this.version = 'Afterbirth'
+      this.pillSlots = this.pillSlotsDefault.concat(this.pillSlotsExtended)
+    },
+    setVersionAfterbirthPlus () {
+      this.version = 'Afterbirth+'
+      this.pillSlots = this.pillSlotsDefault.concat(this.pillSlotsExtended)
+    },
+    setVersionAntibirth () {
+      this.version = 'Antibirth'
+      this.pillSlots = this.pillSlotsDefault
+    },
+    setVersionRebirth () {
+      this.version = 'Rebirth'
+      this.pillSlots = this.pillSlotsDefault
+    },
+    switchVersion: function () {
       switch(this.version){
         case 'Afterbirth+':
-          this.version = 'Afterbirth'
+          this.setVersionAfterbirth()
           break
         case 'Afterbirth':
-          this.version = 'Rebirth'
-          this.pillSlots.splice(this.pillSlotExtendedPillsIndex - 1, 4)
+          this.setVersionRebirth()
           break
         case 'Rebirth':
-          this.version = 'Antibirth'
+          this.setVersionAntibirth()
           break
         case 'Antibirth':
-          this.version = 'Afterbirth+'
-          this.pillSlotsExtended.forEach(
-            (pillSlot) => {
-              this.pillSlots.push(pillSlot)
-            }
-          )
+          this.setVersionAfterbirthPlus()
           break
         default:
           throw new RangeError(`Unknown game version: "${this.version}"`)
@@ -137,6 +127,23 @@ const pills = new Vue({
 
     if(saveData){
       this.version = saveData.version
+
+      switch(this.version){
+        case 'Afterbirth+':
+          this.setVersionAfterbirthPlus()
+          break
+        case 'Afterbirth':
+          this.setVersionAfterbirth()
+          break
+        case 'Rebirth':
+          this.setVersionRebirth()
+          break
+        case 'Antibirth':
+          this.setVersionAntibirth()
+          break
+        default:
+          throw new RangeError(`Unknown game version: "${this.version}"`)
+      }
     }
   }
 })
