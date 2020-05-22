@@ -14,28 +14,31 @@ body, html, #main {
     height: 100%
 }
 
-.abbreviation-autocomplete input{
-  background: url(../Images/Message.png) center center no-repeat border-box;
-  background-color: transparent;
-  background-size: contain;
-  border: 1px solid transparent;
-  color: white;
-  font-size: 18pt;
-  padding: 1em 4em
+.abbreviation-autocomplete {
+  background: url(../Images/Textures/Paper_top_left.png) left top no-repeat border-box, url(../Images/Textures/Paper_top_right.png) right top no-repeat border-box, url(../Images/Textures/Paper_bottom_left.png) left bottom no-repeat border-box, url(../Images/Textures/Paper_bottom_right.png) right bottom no-repeat border-box, url(../Images/Textures/Paper_top.png) right top repeat-x border-box, url(../Images/Textures/Paper_left.png) left top repeat-y border-box, url(../Images/Textures/Paper_right.png) right top repeat-y border-box, url(../Images/Textures/Paper_bottom.png) left bottom repeat-x border-box, url(../Images/Textures/Paper_BG.png) left top padding-box;
 }
 
-.abbreviation-autocomplete input:focus{
-  border: 1px solid #aaa
+.abbreviation-autocomplete input{
+  background-color: transparent;
+  background-size: contain;
+  border: 0;
+  color: black;
+  font-size: 18pt;
+  padding: 0.5em 0
 }
 
 .abbreviation-autocomplete li{
-  background-color: black;
-  color: white;
+  background-color: #c3b19a;
+  color: black;
   font-size: 18pt
 }
 
 .abbreviation-autocomplete ul li.selected {
-  background-color: #222
+  background-color: #a18978;
+}
+
+.abbreviation-autocomplete ul li span.highlight {
+  color: #333
 }
 
 .noscript{
