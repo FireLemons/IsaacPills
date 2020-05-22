@@ -14,12 +14,36 @@ body, html, #main {
     height: 100%
 }
 
+.abbreviation-autocomplete input{
+  background: url(../Images/Message.png) center center no-repeat border-box;
+  background-color: transparent;
+  background-size: contain;
+  border: 1px solid transparent;
+  color: white;
+  font-size: 18pt;
+  padding: 1em 4em
+}
+
+.abbreviation-autocomplete input:focus{
+  border: 1px solid #aaa
+}
+
+.abbreviation-autocomplete li{
+  background-color: black;
+  color: white;
+  font-size: 18pt
+}
+
+.abbreviation-autocomplete ul li.selected {
+  background-color: #222
+}
+
 .noscript{
   color: #d50000;
 }
 
 .clickable {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .clickable:hover {
@@ -55,6 +79,7 @@ body, html, #main {
 #main {
     background: url(../Images/Textures/Content_corner_top_left.png) left top no-repeat border-box, url(../Images/Textures/Content_corner_top_right.png) right top no-repeat border-box, url(../Images/Textures/Content_corner_bottom_left.png) left bottom no-repeat border-box, url(../Images/Textures/Content_corner_bottom_right.png) right bottom no-repeat border-box, url(../Images/Textures/Content_top.png) right top repeat-x border-box, url(../Images/Textures/Content_left.png) left top repeat-y border-box, url(../Images/Textures/Content_right.png) right top repeat-y border-box, url(../Images/Textures/Content_bottom.png) left bottom repeat-x border-box, url(../Images/Textures/Bg.png) left top padding-box;
     box-sizing: border-box;
+    overflow: hidden;
     padding: 3em;
     width: 100%
 }
