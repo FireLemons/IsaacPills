@@ -143,6 +143,36 @@ const pills = new Vue({
         pillSlot.effect = ''
       })
     },
+    PHD: function () {
+      this.pillSlots.forEach((pillSlot) => {
+        switch (pillSlot.effect) {
+          case 'Amnesia':
+            pillSlot.effect = 'I Can See Forever'
+            break
+          case 'Bad Trip':
+            pillSlot.effect = 'Balls of Steel'
+            break
+          case 'Health Down':
+            pillSlot.effect = 'Health Up'
+            break
+          case 'Luck Down':
+            pillSlot.effect = 'Luck Up'
+            break
+          case 'Range Down':
+            pillSlot.effect = 'Range Up'
+            break
+          case 'Shot Speed Down':
+            pillSlot.effect = 'Shot Speed Up'
+            break
+          case 'Speed Down':
+            pillSlot.effect = 'Speed Up'
+            break
+          case 'Tears Down':
+            pillSlot.effect = 'Tears Up'
+            break
+        }
+      })
+    },
     save: function(){
       localStorage.setItem('pills', JSON.stringify(
         {
@@ -217,31 +247,3 @@ const pills = new Vue({
   }
 })
 
-/*
-    $("img#reset").click(function () {
-        for (i = 0; i < pills.length; i++) pills[i] = 1;
-        $("#pillInfo p").text("???");
-    }),
-    $("img#phd").click(function () {
-        $("#pillInfo p").each(function () {
-            switch ($(this).text()) {
-                case "Amnesia":
-                    return void setEffect($(this), "I Can See Forever");
-                case "Bad Trip":
-                    return void setEffect($(this), "Balls of Steel");
-                case "Health Down":
-                    return void setEffect($(this), "Health Up");
-                case "Luck Down":
-                    return void setEffect($(this), "Luck Up");
-                case "Range Down":
-                    return void setEffect($(this), "Range Up");
-                case "Shot Speed Down":
-                    return void setEffect($(this), "Shot Speed Up");
-                case "Speed Down":
-                    return void setEffect($(this), "Speed Up");
-                case "Tears Down":
-                    return void setEffect($(this), "Tears Up");
-            }
-        });
-    }),
- */

@@ -19,11 +19,11 @@
         <h1 class="noscript"> Javascript has been disabled. </h1>
       </noscript>
 			<div id = "topControls">
-        <div class="clickable" @click="clear">
-				    <img alt="Forget Me Now" class="noSelect" src="Images/Forget_Me_Now.png" title="Reset"></img>
+        <div class="clickable" title="Reset" @click="clear">
+				    <img alt="Forget Me Now" class="noSelect" src="Images/Forget_Me_Now.png"></img>
         </div>
         <p class="clickable noSelect" id="version_header" title="Click to change game version." @click="switchVersion">{{ version }}</p>
-        <div class="clickable" title="PHD/Virgo">
+        <div class="clickable" title="PHD/Virgo" @click="PHD">
 		  		  <img alt="PHD" class="noSelect" src="Images/PHD.png"></img>
 			    	<img alt="PHD" class="noSelect" src="Images/Virgo.png"></img>
         </div>
