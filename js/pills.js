@@ -65,69 +65,69 @@ const pills = new Vue({
       {
         alt: 'Solid Blue Pill',
         src: 'Images/Pills/Blue.png',
-        effect: '???'
+        effect: ''
       },
 			{
         alt: 'Dark-Blue Top with Aqua Bottom',
         src: 'Images/Pills/BlueCyan.png',
-        effect: '???'
+        effect: ''
       },
 			{
         alt: 'Solid Orange Pill',
         src: 'Images/Pills/Orange.png',
-        effect: '???'
+        effect: ''
       },
 			{
         alt: 'Solid White Pill',
         src: 'Images/Pills/White.png',
-        effect: '???'
+        effect: ''
       },
       {
 			  alt: 'Spotted Red on Top with Red Bottom',
         src: 'Images/Pills/RedSpecled.png',
-        effect: '???'
+        effect: ''
       },
       {
 			  alt: 'Spotted Yellow on Top with White Bottom',
         src: 'Images/Pills/SpottedWhite.png',
-        effect: '???'
+        effect: ''
       },
       {
 			  alt: 'White Top with Blue Bottom',
         src: 'Images/Pills/WhiteBlue.png',
-        effect: '???'
+        effect: ''
       },
 		  {
         alt: 'Pink Top with Red Bottom',
         src: 'Images/Pills/WhiteRed.png',
-        effect: '???'
+        effect: ''
       },
       {
 			  alt: 'Yellow Top with Orange Bottom',
         src: 'Images/Pills/YellowOrange.png',
-        effect: '???'
+        effect: ''
       }
     ],
     pillSlotsExtended: [
       { 
         alt: 'White Top with Black Bottom',
         src: 'Images/Pills/AfterBirth/Black_White.png',
-        effect: '???'
+        effect: ''
       },
       { 
         alt: 'Black Top with Yellow Bottom',
         src: 'Images/Pills/AfterBirth/Black_Yellow.png',
-        effect: '???'
+        effect: ''
       },
       { 
         alt: 'White Top with Cyan Bottom',
         src: 'Images/Pills/AfterBirth/White_Cyan.png',
-        effect: '???'
+        effect: ''
       },
       {
         alt: 'White Top with Yellow Bottom',
         src: 'Images/Pills/AfterBirth/White_Yellow.png',
-        effect: '???' 
+        effect: '' 
       }
     ],
     version: 'Afterbirth+'
@@ -138,6 +138,11 @@ const pills = new Vue({
     }
   },
   methods: {
+    clear: function () {
+      this.pillSlots.forEach((pillSlot) => {
+        pillSlot.effect = ''
+      })
+    },
     save: function(){
       localStorage.setItem('pills', JSON.stringify(
         {
