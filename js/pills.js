@@ -133,17 +133,17 @@ const pills = new Vue({
     version: 'Afterbirth+'
   },
   watch: {
-    version: function() {
+    version () {
       this.save()
     }
   },
   methods: {
-    clear: function () {
+    clear () {
       this.pillSlots.forEach((pillSlot) => {
         pillSlot.effect = ''
       })
     },
-    PHD: function () {
+    PHD () {
       this.pillSlots.forEach((pillSlot) => {
         switch (pillSlot.effect) {
           case 'Amnesia':
@@ -173,7 +173,7 @@ const pills = new Vue({
         }
       })
     },
-    save: function(){
+    save (){
       localStorage.setItem('pills', JSON.stringify(
         {
           version: this.version
@@ -200,7 +200,7 @@ const pills = new Vue({
       this.pillSlots = this.pillSlotsDefault
       this.pillEffects = this.pillEffectsDefault
     },
-    switchVersion: function () {
+    switchVersion () {
       switch(this.version){
         case 'Afterbirth+':
           this.setVersionAfterbirth()
@@ -219,7 +219,7 @@ const pills = new Vue({
       }
     }
   },
-  created: function(){
+  created (){
     let saveData = JSON.parse(localStorage.getItem('pills'))
 
     if(saveData){
