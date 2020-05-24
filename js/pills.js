@@ -171,6 +171,32 @@ const pills = new Vue({
             pillSlot.effect = 'Tears Up'
             break
         }
+
+        if (this.version === 'Afterbirth+') {
+          switch (pillSlot.effect) {
+            case '???(Curse of the Maze)':
+              pillSlot.effect = 'Telepills'
+              break
+            case 'Addicted':
+              pillSlot.effect = 'Percs!'
+              break
+            case 'I\'m Excited!!!':
+              pillSlot.effect = 'I\'m Drowsy...'
+              break
+            case 'Paralysis':
+              pillSlot.effect = 'Pheromones'
+              break
+            case 'Retro Vision':
+              pillSlot.effect = 'I Can See Forever'
+              break
+            case 'R U A Wizard?':
+              pillSlot.effect = 'Power Pill!'
+              break
+            case 'X-Lax':
+              pillSlot.effect = 'Something\'s wrong...'
+              break
+          }
+        }
       })
     },
     save (){
