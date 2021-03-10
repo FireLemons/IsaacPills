@@ -10,7 +10,7 @@
 		
 		<script src="js/vue.min.js"></script>
 		<script src="autocomplete/abbreviation-autocomplete.min.js"></script>
-		<script src="js/pills.min.js" defer></script>
+		<script src="js/pills.js" defer></script>
 	</head>
 
 	<body>
@@ -33,7 +33,7 @@
           <tr v-for="row in Math.ceil(pillSlots.length / 3)">
             <td v-for="pillSlot in pillSlots.slice((row - 1) * 3, ((row - 1) * 3) + 3)">
 							<img :alt="pillSlot.alt" class="noSelect" :src="pillSlot.src">
-              <abbreviation-autocomplete :data="pillEffects" placeholder="???" v-bind:search-text.sync="pillSlot.effect"></abbreviation-autocomplete>
+              <abbreviation-autocomplete :data="pillEffects" placeholder="???" v-bind:search-text="pillSlot.effect" @select="pillSlot.effect=$event.option" ></abbreviation-autocomplete>
             </td>
           </tr>
 				</tbody>
