@@ -1,65 +1,94 @@
+const pillEffects = [
+  { effect: '???(Curse of the Maze)', added: 'afterbirth' },
+  { effect: 'Addicted', added: 'afterbirth' },
+  { effect: 'Friends Till The End!', added: 'afterbirth' },
+  { effect: 'Infested!', added: 'afterbirth' },
+  { effect: 'Infested?', added: 'afterbirth' },
+  { effect: 'One Makes You Small', added: 'afterbirth' },
+  { effect: 'One Makes You Larger', added: 'afterbirth' },
+  { effect: 'Percs', added: 'afterbirth' },
+  { effect: 'Power Pill', added: 'afterbirth' },
+  { effect: 'Re-Lax', added: 'afterbirth' },
+  { effect: 'Retro Vision', added: 'afterbirth' },
+  { effect: 'Feels like I\'m walking on sunshine!', added: 'afterbirthPlus' },
+  { effect: 'Gulp!', added: 'afterbirthPlus' },
+  { effect: 'Horf!', added: 'afterbirthPlus' },
+  { effect: 'I\'m Drowsy...', added: 'afterbirthPlus' },
+  { effect: 'I\'m Excited!!!', added: 'afterbirthPlus' },
+  { effect: 'Something\'s wrong...', added: 'afterbirthPlus' },
+  { effect: 'Vurp!', added: 'afterbirthPlus' },
+  { effect: 'X-Lax', added: 'afterbirthPlus' },
+  { effect: 'Experimental Pill', added: 'antibirth' },
+  { effect: 'Shot Speed Down', added: 'antibirth' },
+  { effect: 'Shot Speed Up', added: 'antibirth' },
+  { effect: '48 Hour Energy', added: 'default' },
+  { effect: 'Amnesia', added: 'default' },
+  { effect: 'Bad Gas', added: 'default' },
+  { effect: 'Bad Trip', added: 'default' },
+  { effect: 'Balls of Steel', added: 'default' },
+  { effect: 'Bombs Are Key', added: 'default' },
+  { effect: 'Explosive Diarrhea', added: 'default' },
+  { effect: 'Full Health', added: 'default' },
+  { effect: 'Health Down', added: 'default' },
+  { effect: 'Health Up', added: 'default' },
+  { effect: 'Hematemesis', added: 'default' },
+  { effect: 'I Can See Forever', added: 'default' },
+  { effect: 'I Found Pills', added: 'default' },
+  { effect: 'Lemon Party', added: 'default' },
+  { effect: 'Luck Down', added: 'default' },
+  { effect: 'Luck Up', added: 'default' },
+  { effect: 'Paralysis', added: 'default' },
+  { effect: 'Pheromones', added: 'default' },
+  { effect: 'Puberty', added: 'default' },
+  { effect: 'Pretty Fly', added: 'default' },
+  { effect: 'Range Down', added: 'default' },
+  { effect: 'Range Up', added: 'default' },
+  { effect: 'R U a Wizard?', added: 'default' },
+  { effect: 'Speed Down', added: 'default' },
+  { effect: 'Speed Up', added: 'default' },
+  { effect: 'Tears Down', added: 'default' },
+  { effect: 'Tears Up', added: 'default' },
+  { effect: 'Telepills', added: 'default' }
+]
+
+const rebirthEffects = pillEffects.filter((effect) => {
+  return effect.added === 'default'
+}).map((effect) => {
+  return effect.effect
+})
+
+const antibirthEffects = pillEffects.filter((effect) => {
+  const added = effect.added
+
+  return added === 'default' || added === 'antibirth'
+}).map((effect) => {
+  return effect.effect
+})
+
+const afterbirthEffects = pillEffects.filter((effect) => {
+  const added = effect.added
+
+  return added === 'default' || added === 'afterbirth'
+}).map((effect) => {
+  return effect.effect
+})
+
+const afterbirthPlusEffects = pillEffects.filter((effect) => {
+  const added = effect.added
+
+  return added === 'default' || added === 'afterbirth' || added === 'afterbirthPlus'
+}).map((effect) => {
+  return effect.effect
+})
+
+const repentanceEffects = pillEffects.map((effect) => {
+  return effect.effect
+})
+
 const pills = new Vue({
   el: '#main',
   data: {
     pillEffects: [],
-    pillEffectsAfterbirth: [
-      '???(Curse of the Maze)',
-      'Addicted',
-      'Friends Till The End!',
-      'Infested!',
-      'Infested?',
-      'One Makes You Small',
-      'One Makes You Larger',
-      'Percs',
-      'Power Pill',
-      'Re-Lax',
-      'Retro Vision'
-    ],
-    pillEffectsAfterbirthPlus: [
-      'Feels like I\'m walking on sunshine!',
-      'Gulp!',
-      'Horf!',
-      'I\'m Drowsy...',
-      'I\'m Excited!!!',
-      'Something\'s wrong...',
-      'Vurp!',
-      'X-Lax'
-    ],
-    pillEffectsAntibirth: [
-      'Experimental Pill',
-      'Shot Speed Down',
-      'Shot Speed Up'
-    ],
-    pillEffectsDefault: [
-      '48 Hour Energy',
-      'Amnesia',
-      'Bad Gas',
-      'Bad Trip',
-      'Balls of Steel',
-      'Bombs Are Key',
-      'Explosive Diarrhea',
-      'Full Health',
-      'Health Down',
-      'Health Up',
-      'Hematemesis',
-      'I Can See Forever',
-      'I Found Pills',
-      'Lemon Party',
-      'Luck Down',
-      'Luck Up',
-      'Paralysis',
-      'Pheromones',
-      'Puberty',
-      'Pretty Fly',
-      'Range Down',
-      'Range Up',
-      'R U a Wizard?',
-      'Speed Down',
-      'Speed Up',
-      'Tears Down',
-      'Tears Up',
-      'Telepills'
-    ],
     pillSlots: [],
     pillSlotsDefault: [
       {
@@ -209,36 +238,65 @@ const pills = new Vue({
     setVersionAfterbirth () {
       this.version = 'Afterbirth'
       this.pillSlots = this.pillSlotsDefault.concat(this.pillSlotsExtended)
-      this.pillEffects = this.pillEffectsDefault.concat(this.pillEffectsAfterbirth)
+      this.pillEffects = afterbirthEffects
     },
     setVersionAfterbirthPlus () {
       this.version = 'Afterbirth+'
       this.pillSlots = this.pillSlotsDefault.concat(this.pillSlotsExtended)
-      this.pillEffects = this.pillEffectsDefault.concat(this.pillEffectsAfterbirth, this.pillEffectsAfterbirthPlus)
+      this.pillEffects = afterbirthPlusEffects
     },
     setVersionAntibirth () {
       this.version = 'Antibirth'
       this.pillSlots = this.pillSlotsDefault
-      this.pillEffects = this.pillEffectsDefault.concat(this.pillEffectsAntibirth)
+      this.pillEffects = antibirthEffects
     },
     setVersionRebirth () {
       this.version = 'Rebirth'
       this.pillSlots = this.pillSlotsDefault
-      this.pillEffects = this.pillEffectsDefault
+      this.pillEffects = rebirthEffects
+    },
+    setVersionRepentance () {
+      this.version = 'Repentance'
+      this.pillSlots = this.pillSlotsDefault.concat(this.pillSlotsExtended)
+      this.pillEffects = repentanceEffects
+    },
+    setVersion (version) {
+      switch (version) {
+        case 'Rebirth':
+          this.setVersionRebirth()
+          break
+        case 'Antibirth':
+          this.setVersionAntibirth()
+          break
+        case 'Afterbirth':
+          this.setVersionAfterbirth()
+          break
+        case 'Afterbirth+':
+          this.setVersionAfterbirthPlus()
+          break
+        case 'Repentance':
+          this.setVersionRepentance()
+          break
+        default:
+          throw new RangeError(`Unknown game version: "${this.version}"`)
+      }
     },
     switchVersion () {
       switch (this.version) {
-        case 'Afterbirth+':
-          this.setVersionAfterbirth()
-          break
-        case 'Afterbirth':
-          this.setVersionRebirth()
-          break
         case 'Rebirth':
           this.setVersionAntibirth()
           break
         case 'Antibirth':
+          this.setVersionAfterbirth()
+          break
+        case 'Afterbirth':
           this.setVersionAfterbirthPlus()
+          break
+        case 'Afterbirth+':
+          this.setVersionRepentance()
+          break
+        case 'Repentance':
+          this.setVersionRebirth()
           break
         default:
           throw new RangeError(`Unknown game version: "${this.version}"`)
@@ -249,26 +307,9 @@ const pills = new Vue({
     const saveData = JSON.parse(localStorage.getItem('pills'))
 
     if (saveData) {
-      this.version = saveData.version
-
-      switch (this.version) {
-        case 'Afterbirth+':
-          this.setVersionAfterbirthPlus()
-          break
-        case 'Afterbirth':
-          this.setVersionAfterbirth()
-          break
-        case 'Rebirth':
-          this.setVersionRebirth()
-          break
-        case 'Antibirth':
-          this.setVersionAntibirth()
-          break
-        default:
-          throw new RangeError(`Unknown game version: "${this.version}"`)
-      }
+      this.setVersion(saveData.version)
     } else {
-      this.setVersionAfterbirthPlus()
+      this.setVersionRepentance()
     }
   }
 })
