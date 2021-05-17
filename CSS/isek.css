@@ -124,6 +124,7 @@ body, html, #main {
 
 #version_header {
     background: url(../Images/Message.png) center center no-repeat border-box;
+    background-size: contain;
     color: #fff;
     display: inline-block;
     flex-grow: 1;
