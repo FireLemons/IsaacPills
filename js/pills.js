@@ -225,6 +225,33 @@ const pills = new Vue({
               pillSlot.effect = 'Something\'s wrong...'
               break
           }
+        } else if (this.version === 'Repentance') {
+          switch (pillSlot.effect) {
+            case '???(Curse of the Maze)':
+              pillSlot.effect = 'Telepills'
+              break
+            case 'Addicted':
+              pillSlot.effect = 'Percs!'
+              break
+            case 'Bad Trip':
+              pillSlot.effect = 'Balls of Steel'
+              break
+            case 'Horf!':
+              pillSlot.effect = 'Gulp!'
+              break
+            case 'I\'m Excited!!!':
+              pillSlot.effect = 'I\'m Drowsy...'
+              break
+            case 'Paralysis':
+              pillSlot.effect = 'Pheromones'
+              break
+            case 'Retro Vision':
+              pillSlot.effect = 'I Can See Forever'
+              break
+            case 'X-Lax':
+              pillSlot.effect = 'Something\'s wrong...'
+              break
+          }
         }
       })
     },
